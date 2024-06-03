@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>MyBookShelf</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1 class="mt-5">Update Book</h1>
+        <form method="POST" action="{{ url_for('update_book', book_id=book[0]) }}">
+            <div class="form-group">
+                <label for="title">Title</label>
+                <input type="text" id="title" name="title" class="form-control" value="{{ book[1] }}" required>
+            </div>
+            <div class="form-group">
+                <label for="author">Author</label>
+                <input type="text" id="author" name="author" class="form-control" value="{{ book[2] }}" required>
+            </div>
+            <div class="form-group">
+                <label for="genre">Genre</label>
+                <input type="text" id="genre" name="genre" class="form-control" value="{{ book[3] }}" required>
+            </div>
+            <div class="form-group">
+                <label for="year">Year</label>
+                <input type="number" id="year" name="year" class="form-control" value="{{ book[4] }}" required>
+            </div>
+            <div class="form-group">
+                <label>Status</label>
+                <div class="form-check">
+                    <input type="radio" id="completed" name="status" value="Completed" class="form-check-input" {% if book[5] == 'Completed' %} checked {% endif %} required>
+                    <label for="completed" class="form-check-label">Completed</label>
+                </div>
+                <div class="form-check">
+                    <input type="radio" id="not-completed" name="status" value="Not Completed" class="form-check-input" {% if book[5] == 'Not Completed' %} checked {% endif %} required>
+                    <label for="not-completed" class="form-check-label">Not Completed</label>
+                </div>
+            </div>
+            <button type="submit" class="btn btn-primary">Update</button>
+        </form>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
